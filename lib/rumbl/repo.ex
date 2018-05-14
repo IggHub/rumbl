@@ -1,5 +1,4 @@
 defmodule Rumbl.Repo do
-  use Ecto.Repo, otp_app: :rumbl
 
   @moduledoc """
   In memory repository
@@ -19,7 +18,7 @@ defmodule Rumbl.Repo do
 
   def get_by(module, params) do
     Enum.find all(module), fn map ->
-      Enum.all?(params, fn(key, val) -> Map.get(map, key) == val end)
+      Enum.all?(params, fn{key, val} -> Map.get(map, key) == val end)
     end
   end
 end
