@@ -13,6 +13,8 @@ defmodule Rumbl.User do
   def changeset(model, params \\ %{}) do
      model
          |> cast(params, ~w(name username), [])
-	 |> validate_length(:username, min: 1, max: 20)
+         |> validate_required([:username, :name])
+	 |> validate_length(:username, min: 3, max: 20)
+         |> validate_length(:name, min: 3, max: 20)
   end
 end
