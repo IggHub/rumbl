@@ -17,5 +17,11 @@ defmodule Rumbl.SessionController do
           |> put_flash(:error, "Error, invalid username/ password")
           |> render("new.html") 
     end
-  end 
+  end
+
+  def delete(conn, _params) do
+    conn
+      |> Rumbl.Auth.logout()
+      |> redirect(to: page_path(conn, :index))
+  end
 end
