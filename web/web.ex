@@ -61,7 +61,7 @@ defmodule Rumbl.Web do
     quote do
       use Phoenix.Router
 
-      import Rumbl.Auth, only: [:authenticate_user: 2]
+      import Rumbl.Auth, only: [authenticate_user: 2]
     end
   end
 
