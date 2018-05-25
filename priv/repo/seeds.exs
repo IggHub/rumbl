@@ -31,6 +31,6 @@ users = Repo.all User
 vid_url = "https://www.youtube.com/watch?v=gO8N3L_aERg&t=196s"
 vid_url_2 = "https://www.youtube.com/watch?v=a7RoP1LKMeM"
 Enum.each users, fn user ->
-  Repo.insert!(%Video{title: "test vid", url: vid_url, description: "test desc", user_id: user.id})
-  Repo.insert!(%Video{title: "test vid2", url: vid_url_2, description: "Prison Mike", user_id: user.id})
+  Repo.insert!(%Video{title: "test vid", url: vid_url, description: "test desc", user_id: user.id, category_id: 3})
+  Repo.insert!(%Video{title: "test vid2", url: vid_url_2, description: "Prison Mike", user_id: user.id, category_id: 1})
 end

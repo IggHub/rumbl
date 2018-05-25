@@ -4,6 +4,7 @@ defmodule Rumbl.VideoController do
   alias Rumbl.Video
   alias Rumbl.Category
 
+  plug :scrub_params, "video" when action in [:create, :update]
   plug :load_categories when action in [:new, :create, :edit, :update]
 
   def index(conn, _params, user) do
@@ -24,10 +25,10 @@ defmodule Rumbl.VideoController do
                   |> Video.changeset(video_params)
 
     case Repo.insert(changeset) do
-      {:ok, video} ->
+      {:ok, _video} ->
         conn
         |> put_flash(:info, "Video created successfully.")
-        |> redirect(to: video_path(conn, :show, video))
+        |> redirect(to: video_path(conn, :index))
       {:error, changeset} ->
         render(conn, "new.html", changeset: changeset)
     end
