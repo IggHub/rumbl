@@ -10,9 +10,12 @@ defmodule Rumbl.Category do
   @doc """
   Builds a changeset based on the `struct` and `params`.
   """
+  @required_fields ~w(name)
+  @optional_fields ~w()
+
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:name])
+    |> cast(params, @required_fields, @optional_fields)
     |> validate_required([:name])
   end
 

@@ -11,9 +11,12 @@ defmodule Rumbl.User do
     timestamps
   end
 
+  @required_fields ~w(name username)
+  @optional_fields ~w()
+
   def changeset(model, params \\ %{}) do
      model
-         |> cast(params, ~w(name username), [])
+         |> cast(params, @required_fields, @optional_fields)
          |> validate_required([:username, :name])
 	 |> validate_length(:username, min: 3, max: 20)
          |> validate_length(:name, min: 3, max: 20)
