@@ -5,6 +5,7 @@ defmodule Rumbl.Video do
     field :url, :string
     field :title, :string
     field :description, :string
+    field :slug, :string
     belongs_to :user, Rumbl.User, foreign_key: :user_id
     belongs_to :category, Rumbl.Category
 
@@ -35,5 +36,11 @@ defmodule Rumbl.Video do
     str
       |> String.downcase()
       |> String.replace(~r/[^\w-]+/u, "-")    
+  end
+
+  defimpl Phoenix.Param, for: Rumbl.Video do
+    def to_param(%{slug: slug, id: id}) do
+      "#{id}-#{slug}"
+    end
   end
 end
