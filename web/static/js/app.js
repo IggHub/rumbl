@@ -24,4 +24,4 @@ import Video from "./video"
 
 let video = document.getElementById("video")
 
-Video.init(socket, document.getElementById("video"))
+Video.init(socket, video) 
