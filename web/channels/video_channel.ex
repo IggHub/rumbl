@@ -4,7 +4,7 @@ defmodule Rumbl.VideoChannel do
 
   def join("videos:" <> video_id, _params, socket) do 
     video_id = String.to_integer(video_id)
-    video = Repo.get!(socket, video_id)
+    video = Repo.get!(Rumbl.Video, video_id)
 
     annotations = Repo.all(
       from a in assoc(video, :annotations),
