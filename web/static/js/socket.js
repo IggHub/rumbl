@@ -56,7 +56,7 @@ export default socket
 // Or, remove it from the constructor if you don't care about
 // authentication.
 
-socket.connect()
+// socket.connect()
 
 // Now that you are connected, you can join channels with a topic:
 
