@@ -18,7 +18,7 @@ defmodule Rumbl.InfoSys do
 
   defp spawn_query(backend, query, limit) do
     query_ref = make_ref()
-    opts = [backend, query, query_ref, self(), limit)
+    opts = [backend, query, query_ref, self(), limit]
     {:ok, pid} = Supervisor.start_child(Rumbl.InfoSys.Supervisor, opts)
     {pid, query_ref}
   end
